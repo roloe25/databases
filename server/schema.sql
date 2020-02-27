@@ -3,13 +3,7 @@ CREATE DATABASE chat;
 USE chat;
 
 
-CREATE TABLE messages (
-  userid INT NOT NULL,
-  text VARCHAR(120),
-  roomid INT NOT NULL,
-  FOREIGN KEY (userid), REFERENCES (users(userid)),
-  FOREIGN KEY (roomid), REFERENCES (rooms(roomid))
-);
+
 
 CREATE TABLE users (
   userid INT NOT NULL AUTO_INCREMENT,
@@ -23,7 +17,13 @@ CREATE TABLE rooms (
   PRIMARY KEY (roomid)
 );
 
-
+CREATE TABLE messages (
+  userid INT NOT NULL,
+  text VARCHAR(120),
+  roomid INT NOT NULL,
+  FOREIGN KEY (userid) REFERENCES users(userid),
+  FOREIGN KEY (roomid) REFERENCES rooms(roomid)
+);
 
 /* Create other tables and define schemas for them here! */
 
